@@ -1,5 +1,6 @@
 import java.util.Arrays;
 
+//TO DO: ASSIGNMENT POOL
 public class Assignment {
     private int[] permutation;
 
@@ -19,20 +20,5 @@ public class Assignment {
         return new Assignment(copy);
     }
 
-    public int[] getPermutation() {
-        return permutation;
-    }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Assignment that = (Assignment) o;
-        return Arrays.equals(permutation, that.permutation);
-    }
-
-    @Override
-    public int hashCode() {
-        return Arrays.hashCode(permutation);
-    }
 }
