@@ -7,16 +7,21 @@ public class Evaluator {
         this.distanceMatrix = distanceMatrix;
     }
 
-    public int getCost(int[] permutation) {
+    public int getCost(Assignment assignment) {
+        return getCost(assignment.getLocations(), assignment.getFactories());
+    }
+
+    public int getCost(int[] locations, int[] factories) {
         int cost = 0;
-        for (int i = 0; i < permutation.length-1; i++) {
-            cost += distanceMatrix[i][i + 1] *
-                    flowMatrix[permutation[i]][permutation[i + 1]];
+        for (int i = 0; i < locations.length - 1; i++) {
+            cost += distanceMatrix[locations[i]][locations[i + 1]] *
+                    flowMatrix[factories[i]][factories[i + 1]];
         }
         return cost;
     }
 
-    private int getFlow(int firstFlow, int lastFlow){
-
+    public int getCost(int first, int second, int[] locations, int[] factories){
+        return distanceMatrix[locations[first]][locations[second]] *
+                flowMatrix[factories[first]][factories[second]];
     }
 }
