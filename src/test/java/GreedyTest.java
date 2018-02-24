@@ -18,7 +18,9 @@ class GreedyTest {
             {4, 3, 0}
     };
 
-    private Greedy greedy = new Greedy(distanceMatrix, flowMatrix);
+    private Validator validator=new Validator();
+    private Evaluator evaluator=new Evaluator(distanceMatrix,flowMatrix);
+    private Greedy greedy = new Greedy(distanceMatrix.length,evaluator,validator);
 
     @Test
     void assignLocation() {

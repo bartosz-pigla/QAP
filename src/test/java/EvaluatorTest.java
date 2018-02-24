@@ -12,7 +12,7 @@ class EvaluatorTest {
             {5,7,0}
     };
 
-    private Evaluator evaluator=new Evaluator(flowMatrix,distanceMatrix);
+    private Evaluator evaluator=new Evaluator(distanceMatrix,flowMatrix);
 
 //    @org.junit.jupiter.api.BeforeEach
 //    void setUp() {

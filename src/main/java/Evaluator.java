@@ -1,10 +1,11 @@
 public class Evaluator {
-    private int[][] flowMatrix;
     private int[][] distanceMatrix;
+    private int[][] flowMatrix;
 
-    public Evaluator(int[][] flowMatrix, int[][] distanceMatrix) {
-        this.flowMatrix = flowMatrix;
+
+    public Evaluator(int[][] distanceMatrix, int[][] flowMatrix) {
         this.distanceMatrix = distanceMatrix;
+        this.flowMatrix = flowMatrix;
     }
 
     public int getCost(Assignment assignment) {

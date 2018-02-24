@@ -1,20 +1,17 @@
 public class Greedy {
-    private int[][] distanceMatrix;
-    private int[][] flowMatrix;
+    private int problemSize;
     private Evaluator evaluator;
     private Validator validator;
     private SolutionIndicator indicator;
 
-    public Greedy(int[][] distanceMatrix, int[][] flowMatrix) {
-        this.distanceMatrix = distanceMatrix;
-        this.flowMatrix = flowMatrix;
-        this.evaluator = new Evaluator(distanceMatrix, flowMatrix);
-        this.validator = new Validator();
+    public Greedy(int problemSize, Evaluator evaluator, Validator validator) {
+        this.problemSize = problemSize;
+        this.evaluator = evaluator;
+        this.validator = validator;
         this.indicator = new SolutionIndicator();
     }
 
     public Assignment findSolution() {
-        int problemSize = distanceMatrix.length;
         int[] locations = new int[problemSize];
         int[] factories = new int[problemSize];
 

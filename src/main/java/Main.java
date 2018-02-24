@@ -4,10 +4,14 @@ import java.util.Set;
 public class Main {
 
     public static void main(String[] args) {
+        int problemSize = 12;
         MatrixReader matrixReader = new MatrixReader("had12.dat.txt", "  ");
         matrixReader.read();
 
-        Greedy greedy = new Greedy(matrixReader.getDistanceMatrix(), matrixReader.getFlowMatrix());
+        Evaluator evaluator = new Evaluator(matrixReader.getDistanceMatrix(), matrixReader.getFlowMatrix());
+        Validator validator = new Validator();
+
+        Greedy greedy = new Greedy(problemSize, evaluator, validator);
         Assignment solution = greedy.findSolution();
         System.out.println(solution);
 
