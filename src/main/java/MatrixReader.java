@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class MatrixReader {
     private String filename;
@@ -54,18 +56,24 @@ public class MatrixReader {
         String line;
         int i = 0;
 
-        while ((line = bufferedReader.readLine()) != null && i<matrixSize) {
-            String[] row = line.substring(separator.length()).split(separator);
-            matrix[i] = convertToIntArray(row);
+        while ((line = bufferedReader.readLine()) != null && i < matrixSize) {
+            matrix[i] = convertToIntArray(line);
             i++;
         }
     }
 
-    private int[] convertToIntArray(String[] stringArray) {
-        int[] intArray = new int[stringArray.length];
-        for (int i = 0; i < stringArray.length; i++) {
-            intArray[i] = Integer.parseInt(stringArray[i]);
+    private int[] convertToIntArray(String line){
+        int[] intArray = new int[matrixSize];
+
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(line);
+
+        for (int i = 0; i < intArray.length; i++) {
+            matcher.find();
+            String number = matcher.group(0);
+            intArray[i] = Integer.parseInt(number);
         }
+
         return intArray;
     }
 

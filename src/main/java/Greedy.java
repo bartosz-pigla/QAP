@@ -3,12 +3,14 @@ public class Greedy {
     private int[][] flowMatrix;
     private Evaluator evaluator;
     private Validator validator;
+    private SolutionIndicator indicator;
 
     public Greedy(int[][] distanceMatrix, int[][] flowMatrix) {
         this.distanceMatrix = distanceMatrix;
         this.flowMatrix = flowMatrix;
         this.evaluator = new Evaluator(distanceMatrix, flowMatrix);
         this.validator = new Validator();
+        this.indicator = new SolutionIndicator();
     }
 
     public Assignment findSolution() {
@@ -55,7 +57,6 @@ public class Greedy {
     }
 
     public int assignLocation(int idx, int[] locations, int[] factories) {
-        SolutionIndicator indicator = new SolutionIndicator();
         indicator.setCost(Integer.MAX_VALUE);
 
         for (int k = 0; k < locations.length; k++) {
@@ -76,39 +77,6 @@ public class Greedy {
         factories[idx] = indicator.getFacIdx();
         return indicator.getCost();
     }
-
-//    public Assignment findSolution() {
-//        int problemSize = distanceMatrix.length;
-//        int[] locations = new int[problemSize];
-//        int[] factories = new int[problemSize];
-//        locations[0] = 0;
-//        factories[0] = 0;
-//        SolutionIndicator indicator = new SolutionIndicator();
-//        Validator validator = new Validator();
-//
-//        int i = 1;
-//        while (i < problemSize) {
-//            indicator.setCost(Integer.MAX_VALUE);
-//
-//            for (int locIdx = 0; locIdx < problemSize - 1; locIdx++) {
-//                for (int facIdx = 0; facIdx < problemSize - 1; facIdx++) {
-//                    locations[i] = locIdx;
-//                    factories[i] = facIdx;
-//                    if (validator.isValid(i, locations, factories)) {
-//                        int cost = evaluator.getCost(i - 1, i, locations, factories);
-//                        if (indicator.getCost() > cost) {
-//                            indicator.setCost(cost);
-//                            indicator.setLocIdx(locIdx);
-//                            indicator.setFacIdx(facIdx);
-//                        }
-//                    }
-//                }
-//            }
-//            i++;
-//        }
-//
-//        return new Assignment(locations, factories);
-//    }
 
     static class SolutionIndicator {
         int cost;
