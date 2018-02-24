@@ -1,6 +1,5 @@
 import java.util.Arrays;
 
-//TO DO: ASSIGNMENT POOL
 public class Assignment {
     private int[] locations;
     private int[] factories;
