@@ -21,7 +21,7 @@ class EvaluatorTest {
 
     @org.junit.jupiter.api.Test
     void getCost() {
-        Assignment input = new Assignment(new int[]{0, 1, 2}, new int[]{0, 2, 1});
+        Solution input = new Solution(new int[]{0, 1, 2}, new int[]{0, 2, 1});
         int output = evaluator.getCost(input);
         int expected = 57;
         assertEquals(output, expected);

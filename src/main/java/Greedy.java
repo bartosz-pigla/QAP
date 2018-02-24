@@ -11,20 +11,20 @@ public class Greedy {
         this.indicator = new SolutionIndicator();
     }
 
-    public Assignment findSolution() {
+    public Solution findSolution() {
         int[] locations = new int[problemSize];
         int[] factories = new int[problemSize];
 
-        doFirstAssignment(locations, factories);
+        doFirstSolution(locations, factories);
 
         for (int i = 2; i < problemSize; i++) {
             assignLocation(i, locations, factories);
         }
 
-        return new Assignment(locations, factories);
+        return new Solution(locations, factories);
     }
 
-    public void doFirstAssignment(int[] locations, int[] factories) {
+    public void doFirstSolution(int[] locations, int[] factories) {
         int firstLoc = 0, secondLoc = 0;
         int firstFac = 0, secondFac = 0;
         int leastCost = Integer.MAX_VALUE;

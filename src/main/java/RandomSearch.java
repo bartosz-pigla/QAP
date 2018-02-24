@@ -12,23 +12,23 @@ public class RandomSearch {
     }
 
     public void run() {
-        Population population = new Population(randomAssignments(problemSize, populationSize), evaluator);
+        Population population = new Population(randomSolutions(problemSize, populationSize), evaluator);
 
         for (int i = 1; i < iterationsQuantity; i++) {
-            randomAssignments(population.getAssignments());
+            randomSolutions(population.getSolutions());
             population.searchForStrongAvgWeak();
         }
     }
 
-    private void randomAssignments(Assignment[] assignments) {
-        for (int i = 0; i < assignments.length; i++) {
-            Utils.shuffleArray(assignments[i].getLocations());
-            Utils.shuffleArray(assignments[i].getFactories());
+    private void randomSolutions(Solution[] solutions) {
+        for (int i = 0; i < solutions.length; i++) {
+            Utils.shuffleArray(solutions[i].getLocations());
+            Utils.shuffleArray(solutions[i].getFactories());
         }
     }
 
-    private Assignment[] randomAssignments(int problemSize, int populationSize) {
-        Assignment[] assignments = new Assignment[populationSize];
+    private Solution[] randomSolutions(int problemSize, int populationSize) {
+        Solution[] solutions = new Solution[populationSize];
         int[] sortedArray = Utils.getSortedArray(problemSize);
         int[] distance, factories;
         for (int i = 0; i < populationSize; i++) {
@@ -36,8 +36,8 @@ public class RandomSearch {
             Utils.shuffleArray(distance);
             factories = sortedArray.clone();
             Utils.shuffleArray(factories);
-            assignments[i] = new Assignment(distance, factories);
+            solutions[i] = new Solution(distance, factories);
         }
-        return assignments;
+        return solutions;
     }
 }

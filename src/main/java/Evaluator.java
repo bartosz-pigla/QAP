@@ -8,8 +8,8 @@ public class Evaluator {
         this.flowMatrix = flowMatrix;
     }
 
-    public int getCost(Assignment assignment) {
-        return getCost(assignment.getLocations(), assignment.getFactories());
+    public int getCost(Solution solution) {
+        return getCost(solution.getLocations(), solution.getFactories());
     }
 
     public int getCost(int[] locations, int[] factories) {

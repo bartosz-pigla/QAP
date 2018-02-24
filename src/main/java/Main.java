@@ -12,7 +12,7 @@ public class Main {
         Validator validator = new Validator();
 
         Greedy greedy = new Greedy(problemSize, evaluator, validator);
-        Assignment solution = greedy.findSolution();
+        Solution solution = greedy.findSolution();
         System.out.println(solution);
 
         System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + getDistinctValuesQuantityOfArray(solution.getLocations()));

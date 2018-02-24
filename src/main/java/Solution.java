@@ -1,10 +1,10 @@
 import java.util.Arrays;
 
-public class Assignment {
+public class Solution {
     private int[] locations;
     private int[] factories;
 
-    public Assignment(int[] locations, int[] factories) {
+    public Solution(int[] locations, int[] factories) {
         this.locations = locations;
         this.factories = factories;
     }
@@ -25,20 +25,20 @@ public class Assignment {
         return factories;
     }
 
-    public static Assignment copyOf(Assignment original) {
+    public static Solution copyOf(Solution original) {
         int length = original.locations.length;
         int[] locationsCopy = new int[length];
         System.arraycopy(original.locations, 0, locationsCopy, 0, length);
         int[] factoriesCopy = new int[length];
         System.arraycopy(original.factories, 0, factoriesCopy, 0, length);
-        return new Assignment(locationsCopy, factoriesCopy);
+        return new Solution(locationsCopy, factoriesCopy);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Assignment that = (Assignment) o;
+        Solution that = (Solution) o;
         return Arrays.equals(locations, that.locations) &&
                 Arrays.equals(factories, that.factories);
     }
@@ -53,7 +53,7 @@ public class Assignment {
 
     @Override
     public String toString() {
-        return "Assignment{" +
+        return "Solution{" +
                 "locations=" + Arrays.toString(locations) +
                 ", factories=" + Arrays.toString(factories) +
                 '}';

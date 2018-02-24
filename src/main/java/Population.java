@@ -1,14 +1,14 @@
 public class Population {
-    private Assignment[] assignments;
+    private Solution[] solutions;
     private int avgCost;
-    private Assignment strong;
-    private Assignment weak;
+    private Solution strong;
+    private Solution weak;
     private int strongCost;
     private int weakCost;
     private Evaluator evaluator;
 
-    public Population(Assignment[] assignments, Evaluator evaluator) {
-        this.assignments = assignments;
+    public Population(Solution[] solutions, Evaluator evaluator) {
+        this.solutions = solutions;
         this.evaluator = evaluator;
     }
 
@@ -17,11 +17,11 @@ public class Population {
         strongCost = Integer.MAX_VALUE;
         weakCost = Integer.MIN_VALUE;
 
-        Assignment current = null;
+        Solution current = null;
         int currentCost;
 
-        for (int i = 0; i < assignments.length; i++) {
-            current = assignments[i];
+        for (int i = 0; i < solutions.length; i++) {
+            current = solutions[i];
             currentCost = evaluator.getCost(current);
             avgCost += currentCost;
             if (currentCost < strongCost) {
@@ -34,18 +34,18 @@ public class Population {
             }
         }
 
-        avgCost = avgCost / assignments.length;
+        avgCost = avgCost / solutions.length;
     }
 
     public int getAvgCost() {
         return avgCost;
     }
 
-    public Assignment getStrong() {
+    public Solution getStrong() {
         return strong;
     }
 
-    public Assignment getWeak() {
+    public Solution getWeak() {
         return weak;
     }
 
@@ -57,7 +57,7 @@ public class Population {
         return weakCost;
     }
 
-    public Assignment[] getAssignments() {
-        return assignments;
+    public Solution[] getSolutions() {
+        return solutions;
     }
 }

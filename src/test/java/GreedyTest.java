@@ -34,11 +34,11 @@ class GreedyTest {
     }
 
     @Test
-    void doFirstAssignment() {
+    void doFirstSolution() {
         int[] locations = new int[distanceMatrix.length];
         int[] factories = new int[flowMatrix.length];
 
-        greedy.doFirstAssignment(locations, factories);
+        greedy.doFirstSolution(locations, factories);
     }
 
     @Test
