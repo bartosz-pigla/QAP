@@ -62,7 +62,7 @@ public class MatrixReader {
         }
     }
 
-    private int[] convertToIntArray(String line){
+    private int[] convertToIntArray(String line) {
         int[] intArray = new int[matrixSize];
 
         Pattern pattern = Pattern.compile("\\d+");

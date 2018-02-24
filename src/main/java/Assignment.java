@@ -10,11 +10,11 @@ public class Assignment {
         this.factories = factories;
     }
 
-    public int getLocation(int locationNumber){
+    public int getLocation(int locationNumber) {
         return locations[locationNumber];
     }
 
-    public int getFactory(int factoryNumber){
+    public int getFactory(int factoryNumber) {
         return factories[factoryNumber];
     }
 

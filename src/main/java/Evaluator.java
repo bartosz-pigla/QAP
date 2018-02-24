@@ -20,7 +20,7 @@ public class Evaluator {
         return cost;
     }
 
-    public int getCost(int first, int second, int[] locations, int[] factories){
+    public int getCost(int first, int second, int[] locations, int[] factories) {
         return distanceMatrix[locations[first]][locations[second]] *
                 flowMatrix[factories[first]][factories[second]];
     }

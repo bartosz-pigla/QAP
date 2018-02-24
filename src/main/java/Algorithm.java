@@ -1,6 +1,6 @@
 public abstract class Algorithm {
-    protected int[][]flowMatrix;
-    protected int[][]distanceMatrix;
+    protected int[][] flowMatrix;
+    protected int[][] distanceMatrix;
     protected int problemSize;
 
     public Algorithm(int[][] flowMatrix, int[][] distanceMatrix, int problemSize) {
