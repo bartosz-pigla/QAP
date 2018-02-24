@@ -1,4 +1,10 @@
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
 public class Validator {
+    Set<Integer> distinctValues=new HashSet<>();
+
     public boolean isValid(int stopIdx, int[] locations, int[] factories) {
         if (arrayContainsDistinctValues(stopIdx, locations) && arrayContainsDistinctValues(stopIdx, factories)) {
             return true;
@@ -9,13 +15,17 @@ public class Validator {
     }
 
     private boolean arrayContainsDistinctValues(int stopIdx, int[] array) {
-        for (int i = 0; i <= stopIdx - 1; i++) {
-            for (int j = i + 1; j <= stopIdx; j++) {
-                if (array[i] == array[j]) {
-                    return false;
-                }
-            }
+//        if(Arrays.equals(array,new int[]{1,2,1})){
+//            System.out.println("ARRAYS");
+//        }
+
+        distinctValues.clear();
+
+        for(int i=0;i<=stopIdx;i++){
+            distinctValues.add(array[i]);
         }
-        return true;
+
+        return distinctValues.size()==stopIdx+1;
     }
+
 }

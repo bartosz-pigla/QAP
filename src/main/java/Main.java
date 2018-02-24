@@ -5,6 +5,7 @@ public class Main {
         matrixReader.read();
 
         Greedy greedy=new Greedy(matrixReader.getDistanceMatrix(),matrixReader.getFlowMatrix());
-        greedy.findSolution();
+        Assignment solution = greedy.findSolution();
+        System.out.println(solution);
     }
 }
