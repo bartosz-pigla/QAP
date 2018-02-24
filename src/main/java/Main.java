@@ -15,16 +15,13 @@ public class Main {
         Solution solution = greedy.findSolution();
         System.out.println(solution);
 
-        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + getDistinctValuesQuantityOfArray(solution.getLocations()));
-        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + getDistinctValuesQuantityOfArray(solution.getFactories()));
+        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + Utils.getDistinctValuesQuantityOfArray(solution.getLocations()));
+        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + Utils.getDistinctValuesQuantityOfArray(solution.getFactories()));
 
+        CsvLogger logger = new CsvLogger("randomSearch1.csv");
+        RandomSearch randomSearch = new RandomSearch(50, 12, 10, evaluator, logger);
+        randomSearch.run();
     }
 
-    public static int getDistinctValuesQuantityOfArray(int[] array) {
-        Set<Integer> distinctValues = new HashSet<>(array.length);
-        for (int i = 0; i < array.length; i++) {
-            distinctValues.add(array[i]);
-        }
-        return distinctValues.size();
-    }
+
 }

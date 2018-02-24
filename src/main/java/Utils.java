@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 public class Utils {
     public static void shuffleArray(int[] a) {
@@ -23,5 +25,13 @@ public class Utils {
             array[i] = i;
         }
         return array;
+    }
+
+    public static int getDistinctValuesQuantityOfArray(int[] array) {
+        Set<Integer> distinctValues = new HashSet<>(array.length);
+        for (int i = 0; i < array.length; i++) {
+            distinctValues.add(array[i]);
+        }
+        return distinctValues.size();
     }
 }

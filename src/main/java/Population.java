@@ -16,6 +16,7 @@ public class Population {
     public void searchForStrongAvgWeak() {
         strongCost = Integer.MAX_VALUE;
         weakCost = Integer.MIN_VALUE;
+        avgCost = 0;
 
         Solution current = null;
         int currentCost;
