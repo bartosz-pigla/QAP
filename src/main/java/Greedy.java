@@ -28,12 +28,13 @@ public class Greedy {
         int firstLoc = 0, secondLoc = 0;
         int firstFac = 0, secondFac = 0;
         int leastCost = Integer.MAX_VALUE;
+        int cost = 0;
 
         for (int i = 0; i < locations.length; i++) {
             locations[0] = i;
             for (int j = 0; j < factories.length; j++) {
                 factories[0] = j;
-                int cost = assignLocation(1, locations, factories);
+                cost = assignLocation(1, locations, factories);
 
                 if (validator.isValid(1, locations, factories)) {
                     if (leastCost > cost) {
@@ -55,13 +56,14 @@ public class Greedy {
 
     public int assignLocation(int idx, int[] locations, int[] factories) {
         indicator.setCost(Integer.MAX_VALUE);
+        int cost = 0;
 
         for (int k = 0; k < locations.length; k++) {
             locations[idx] = k;
             for (int l = 0; l < factories.length; l++) {
                 factories[idx] = l;
                 if (validator.isValid(idx, locations, factories)) {
-                    int cost = evaluator.getCost(idx - 1, idx, locations, factories);
+                    cost = evaluator.getCost(idx - 1, idx, locations, factories);
                     if (indicator.getCost() > cost) {
                         indicator.setCost(cost);
                         indicator.setLocIdx(k);

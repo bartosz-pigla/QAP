@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class GreedyTest {
 
@@ -18,9 +18,9 @@ class GreedyTest {
             {4, 3, 0}
     };
 
-    private Validator validator=new Validator();
-    private Evaluator evaluator=new Evaluator(distanceMatrix,flowMatrix);
-    private Greedy greedy = new Greedy(distanceMatrix.length,evaluator,validator);
+    private Validator validator = new Validator();
+    private Evaluator evaluator = new Evaluator(distanceMatrix, flowMatrix);
+    private Greedy greedy = new Greedy(distanceMatrix.length, evaluator, validator);
 
     @Test
     void assignLocation() {
@@ -42,7 +42,7 @@ class GreedyTest {
     }
 
     @Test
-    void findSolution(){
+    void findSolution() {
         int[] locations = new int[distanceMatrix.length];
         int[] factories = new int[flowMatrix.length];
 
