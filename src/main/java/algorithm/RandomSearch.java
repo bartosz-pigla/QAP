@@ -1,3 +1,11 @@
+package algorithm;
+
+import domain.Evaluator;
+import domain.Population;
+import domain.Solution;
+import utils.CsvLogger;
+import utils.Utils;
+
 public class RandomSearch {
     private int populationSize;
     private int problemSize;
@@ -18,12 +26,12 @@ public class RandomSearch {
 
         Population population = new Population(randomSolutions(problemSize, populationSize), evaluator);
         population.searchForStrongAvgWeak();
-        logger.printStrongAvgWeak(1,population);
+        logger.printStrongAvgWeak(1, population);
 
         for (int i = 1; i < iterationsQuantity; i++) {
             randomSolutions(population.getSolutions());
             population.searchForStrongAvgWeak();
-            logger.printStrongAvgWeak(i+1,population);
+            logger.printStrongAvgWeak(i + 1, population);
         }
 
         logger.finish();

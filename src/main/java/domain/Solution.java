@@ -1,3 +1,5 @@
+package domain;
+
 import java.util.Arrays;
 
 public class Solution {
@@ -53,7 +55,7 @@ public class Solution {
 
     @Override
     public String toString() {
-        return "Solution{" +
+        return "domain.Solution{" +
                 "locations=" + Arrays.toString(locations) +
                 ", factories=" + Arrays.toString(factories) +
                 '}';

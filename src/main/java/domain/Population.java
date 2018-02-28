@@ -1,3 +1,5 @@
+package domain;
+
 public class Population {
     private Solution[] solutions;
     private int avgCost;

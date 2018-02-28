@@ -1,3 +1,7 @@
+package algorithm;
+
+import domain.Evaluator;
+import domain.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;

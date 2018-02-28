@@ -1,4 +1,8 @@
+package utils;
+
+import algorithm.RandomSearch;
 import au.com.bytecode.opencsv.CSVWriter;
+import domain.Population;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,7 +10,7 @@ import java.io.IOException;
 public class CsvLogger {
     private CSVWriter writer;
 
-    CsvLogger(String filename) {
+    public CsvLogger(String filename) {
         try {
             this.writer = new CSVWriter(new FileWriter(filename), '\t');
         } catch (Exception exc) {

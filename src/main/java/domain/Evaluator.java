@@ -1,3 +1,5 @@
+package domain;
+
 public class Evaluator {
     private int[][] distanceMatrix;
     private int[][] flowMatrix;

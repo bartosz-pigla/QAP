@@ -1,3 +1,9 @@
+package algorithm;
+
+import domain.Evaluator;
+import domain.Solution;
+import domain.Validator;
+
 public class Greedy {
     private int problemSize;
     private Evaluator evaluator;

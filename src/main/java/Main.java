@@ -1,3 +1,13 @@
+import algorithm.Greedy;
+import algorithm.RandomSearch;
+import domain.Evaluator;
+import domain.Solution;
+import domain.Validator;
+import utils.CsvLogger;
+import utils.MatrixReader;
+
+import java.net.URL;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -5,7 +15,9 @@ public class Main {
     }
 
     public static void run(int problemSize) {
-        MatrixReader matrixReader = new MatrixReader("had" + problemSize + ".dat.txt", "  ");
+        URL url = Main.class.getResource("had" + problemSize + ".dat.txt");
+
+        MatrixReader matrixReader = new MatrixReader(url);
         matrixReader.read();
 
         Evaluator evaluator = new Evaluator(matrixReader.getDistanceMatrix(), matrixReader.getFlowMatrix());
@@ -19,7 +31,7 @@ public class Main {
 //        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + Utils.getDistinctValuesQuantityOfArray(solution.getFactories()));
 
         CsvLogger logger = new CsvLogger("randomSearch" + problemSize + ".csv");
-        RandomSearch randomSearch = new RandomSearch(50, 12, 10, evaluator, logger);
+        RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, logger);
         randomSearch.run();
     }
 }

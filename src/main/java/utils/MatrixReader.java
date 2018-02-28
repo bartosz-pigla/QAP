@@ -1,27 +1,26 @@
+package utils;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MatrixReader {
-    private String filename;
-    private String separator;
-
+    private URL url;
     private int matrixSize;
 
     private int[][] flowMatrix;
     private int[][] distanceMatrix;
 
-    public MatrixReader(String filename, String separator) {
-        this.filename = filename;
-        this.separator = separator;
+    public MatrixReader(URL url) {
+        this.url = url;
     }
 
     public void read() {
-        URL url = getClass().getResource(filename);
         File file = new File(url.getPath());
 
         try {
@@ -45,7 +44,8 @@ public class MatrixReader {
     private void setMatrixSize(BufferedReader bufferedReader) throws IOException {
         String line;
         if ((line = bufferedReader.readLine()) != null) {
-            matrixSize = Integer.parseInt(line.substring(separator.length()));
+            Scanner scanner = new Scanner(line);
+            matrixSize = scanner.nextInt();
         } else {
             System.out.println("FILE IS EMPTY");
             throw new IOException();
