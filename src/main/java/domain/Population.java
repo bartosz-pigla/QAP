@@ -1,12 +1,26 @@
 package domain;
 
+import lombok.Getter;
+
 public class Population {
+    @Getter
     private Solution[] solutions;
+
+    @Getter
     private int avgCost;
+
+    @Getter
     private Solution strong;
+
+    @Getter
     private Solution weak;
+
+    @Getter
     private int strongCost;
+
+    @Getter
     private int weakCost;
+
     private Evaluator evaluator;
 
     public Population(Solution[] solutions, Evaluator evaluator) {
@@ -38,29 +52,5 @@ public class Population {
         }
 
         avgCost = avgCost / solutions.length;
-    }
-
-    public int getAvgCost() {
-        return avgCost;
-    }
-
-    public Solution getStrong() {
-        return strong;
-    }
-
-    public Solution getWeak() {
-        return weak;
-    }
-
-    public int getStrongCost() {
-        return strongCost;
-    }
-
-    public int getWeakCost() {
-        return weakCost;
-    }
-
-    public Solution[] getSolutions() {
-        return solutions;
     }
 }

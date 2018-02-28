@@ -1,5 +1,5 @@
-import algorithm.Greedy;
-import algorithm.RandomSearch;
+import algorithm.greedy.Greedy;
+import algorithm.randomSearch.RandomSearch;
 import domain.Evaluator;
 import domain.Solution;
 import domain.Validator;

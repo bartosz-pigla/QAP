@@ -1,5 +1,6 @@
 package algorithm;
 
+import algorithm.greedy.Greedy;
 import domain.Evaluator;
 import domain.Validator;
 import org.junit.jupiter.api.Test;

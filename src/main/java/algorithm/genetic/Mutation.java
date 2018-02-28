@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.genetic;
 
 import domain.Solution;
 import lombok.AllArgsConstructor;
@@ -6,10 +6,10 @@ import lombok.Value;
 
 @Value
 @AllArgsConstructor
-public class Crossover {
+public class Mutation {
     int probability;
 
-    public void doCrossover(Solution first, Solution second) {
+    public void doMutation(Solution solution) {
 
     }
 }

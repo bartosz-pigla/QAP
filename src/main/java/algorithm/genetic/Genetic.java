@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.genetic;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -16,7 +16,11 @@ public class Genetic {
     Mutation mutation;
     Crossover crossover;
 
-    public void run() {
+    Selection selection;
 
+    public void run() {
+        for (int i = 0; i < populationSize; i++) {
+
+        }
     }
 }

@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.randomSearch;
 
 import domain.Evaluator;
 import domain.Population;

@@ -1,6 +1,6 @@
 package utils;
 
-import algorithm.RandomSearch;
+import algorithm.randomSearch.RandomSearch;
 import au.com.bytecode.opencsv.CSVWriter;
 import domain.Population;
 

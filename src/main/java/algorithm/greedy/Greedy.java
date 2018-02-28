@@ -1,4 +1,4 @@
-package algorithm;
+package algorithm.greedy;
 
 import domain.Evaluator;
 import domain.Solution;

@@ -1,14 +1,11 @@
 package domain;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class Evaluator {
     private int[][] distanceMatrix;
     private int[][] flowMatrix;
-
-
-    public Evaluator(int[][] distanceMatrix, int[][] flowMatrix) {
-        this.distanceMatrix = distanceMatrix;
-        this.flowMatrix = flowMatrix;
-    }
 
     public int getCost(Solution solution) {
         return getCost(solution.getLocations(), solution.getFactories());

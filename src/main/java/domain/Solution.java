@@ -1,15 +1,24 @@
 package domain;
 
-import java.util.Arrays;
+import lombok.*;
 
+@EqualsAndHashCode(of = {"locations", "factories"})
+@ToString
 public class Solution {
-    private int[] locations;
-    private int[] factories;
+    @Getter
+    int[] locations;
+
+    @Getter
+    int[] factories;
 
     public Solution(int[] locations, int[] factories) {
         this.locations = locations;
         this.factories = factories;
     }
+
+    @Getter
+    @Setter
+    int cost;
 
     public int getLocation(int locationNumber) {
         return locations[locationNumber];
@@ -17,14 +26,6 @@ public class Solution {
 
     public int getFactory(int factoryNumber) {
         return factories[factoryNumber];
-    }
-
-    public int[] getLocations() {
-        return locations;
-    }
-
-    public int[] getFactories() {
-        return factories;
     }
 
     public static Solution copyOf(Solution original) {
@@ -36,28 +37,4 @@ public class Solution {
         return new Solution(locationsCopy, factoriesCopy);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Solution that = (Solution) o;
-        return Arrays.equals(locations, that.locations) &&
-                Arrays.equals(factories, that.factories);
-    }
-
-    @Override
-    public int hashCode() {
-
-        int result = Arrays.hashCode(locations);
-        result = 31 * result + Arrays.hashCode(factories);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "domain.Solution{" +
-                "locations=" + Arrays.toString(locations) +
-                ", factories=" + Arrays.toString(factories) +
-                '}';
-    }
 }
