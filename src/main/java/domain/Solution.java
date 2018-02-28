@@ -4,11 +4,9 @@ import lombok.*;
 
 @EqualsAndHashCode(of = {"locations", "factories"})
 @ToString
+@Data
 public class Solution {
-    @Getter
     int[] locations;
-
-    @Getter
     int[] factories;
 
     public Solution(int[] locations, int[] factories) {
@@ -16,8 +14,6 @@ public class Solution {
         this.factories = factories;
     }
 
-    @Getter
-    @Setter
     int cost;
 
     public int getLocation(int locationNumber) {

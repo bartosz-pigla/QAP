@@ -2,7 +2,24 @@ package utils;
 
 import domain.Solution;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class RandomUtils {
+    private static final ThreadLocalRandom random = ThreadLocalRandom.current();
+
+    public static boolean isSelected(int probability) {
+        return random.nextInt(0, 100) < probability;
+    }
+
+    public static Solution selectSolutionOtherThan(Solution solutionToExclude, Solution[] solutions) {
+        int idx;
+        do {
+            idx = random.nextInt(0, solutions.length);
+        } while (solutions[idx] == solutionToExclude);
+
+        return solutions[idx];
+    }
+
     public static void randomSolutions(Solution[] solutions) {
         for (int i = 0; i < solutions.length; i++) {
             ArrayUtils.shuffleArray(solutions[i].getLocations());

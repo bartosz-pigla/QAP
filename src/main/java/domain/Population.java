@@ -1,9 +1,11 @@
 package domain;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class Population {
     @Getter
+    @Setter
     private Solution[] solutions;
 
     @Getter
@@ -23,11 +25,14 @@ public class Population {
 
     private Evaluator evaluator;
 
+    public Population(Evaluator evaluator) {
+        this.evaluator = evaluator;
+    }
+
     public Population(Solution[] solutions, Evaluator evaluator) {
         this.solutions = solutions;
         this.evaluator = evaluator;
     }
-
 
     public void searchForStrongAvgWeak() {
         strongCost = Integer.MAX_VALUE;
