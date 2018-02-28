@@ -27,8 +27,8 @@ public class Main {
         Solution solution = greedy.findSolution();
         System.out.println(solution);
 
-//        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + Utils.getDistinctValuesQuantityOfArray(solution.getLocations()));
-//        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + Utils.getDistinctValuesQuantityOfArray(solution.getFactories()));
+//        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getLocations()));
+//        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getFactories()));
 
         CsvLogger logger = new CsvLogger("randomSearch" + problemSize + ".csv");
         RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, logger);

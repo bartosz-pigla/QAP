@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-public class Utils {
+public class ArrayUtils {
     public static void shuffleArray(int[] a) {
         int n = a.length;
         Random random = new Random();
@@ -36,4 +36,5 @@ public class Utils {
         }
         return distinctValues.size();
     }
+
 }

@@ -1,5 +1,7 @@
 package utils;
 
+import lombok.Getter;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +15,9 @@ public class MatrixReader {
     private URL url;
     private int matrixSize;
 
+    @Getter
     private int[][] flowMatrix;
+    @Getter
     private int[][] distanceMatrix;
 
     public MatrixReader(URL url) {
@@ -75,13 +79,5 @@ public class MatrixReader {
         }
 
         return intArray;
-    }
-
-    public int[][] getFlowMatrix() {
-        return flowMatrix;
-    }
-
-    public int[][] getDistanceMatrix() {
-        return distanceMatrix;
     }
 }

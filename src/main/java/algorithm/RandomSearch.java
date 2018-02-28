@@ -2,9 +2,9 @@ package algorithm;
 
 import domain.Evaluator;
 import domain.Population;
-import domain.Solution;
 import utils.CsvLogger;
-import utils.Utils;
+
+import static utils.RandomUtils.randomSolutions;
 
 public class RandomSearch {
     private int populationSize;
@@ -37,26 +37,7 @@ public class RandomSearch {
         logger.finish();
     }
 
-    private void randomSolutions(Solution[] solutions) {
-        for (int i = 0; i < solutions.length; i++) {
-            Utils.shuffleArray(solutions[i].getLocations());
-            Utils.shuffleArray(solutions[i].getFactories());
-        }
-    }
 
-    private Solution[] randomSolutions(int problemSize, int populationSize) {
-        Solution[] solutions = new Solution[populationSize];
-        int[] sortedArray = Utils.getSortedArray(problemSize);
-        int[] distance, factories;
-        for (int i = 0; i < populationSize; i++) {
-            distance = sortedArray.clone();
-            Utils.shuffleArray(distance);
-            factories = sortedArray.clone();
-            Utils.shuffleArray(factories);
-            solutions[i] = new Solution(distance, factories);
-        }
-        return solutions;
-    }
 
     public int getPopulationSize() {
         return populationSize;
