@@ -29,16 +29,19 @@ public class Genetic {
     CsvLogger logger;
 
     public void run() {
+        logger.printAlgorithmInfo(this);
+
         Population oldPopulation = new Population(randomSolutions(problemSize, populationSize), evaluator);
         oldPopulation.calculateCostsAndSearchForStrongAvgWeak();
         logger.printStrongAvgWeak(0, oldPopulation);
 
         Population newPopulation = null;
-        for (int i = 1; i < populationSize; i++) {
+        for (int i = 1; i < iterationsQuantity; i++) {
             newPopulation = generateNewPopulation(oldPopulation);
             newPopulation.searchForStrongAvgWeak();
-            logger.printStrongAvgWeak(0, newPopulation);
+            logger.printStrongAvgWeak(i, newPopulation);
         }
+        logger.finish();
     }
 
     private Population generateNewPopulation(Population oldPopulation) {

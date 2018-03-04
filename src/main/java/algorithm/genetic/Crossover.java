@@ -8,7 +8,14 @@ public class Crossover {
     int probability;
 
     public void doCrossover(Solution first, Solution second) {
-        swapLocations(first, second);
+
+        if (Math.random() < 0.5) {
+            swapLocations(first, second);
+        } else {
+            swapFactories(first, second);
+        }
+
+        //swapLocations(first, second);
     }
 
     private void swapLocations(Solution first, Solution second) {

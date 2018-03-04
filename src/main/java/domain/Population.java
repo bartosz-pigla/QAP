@@ -3,8 +3,6 @@ package domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.function.Function;
-
 public class Population {
     @Getter
     @Setter

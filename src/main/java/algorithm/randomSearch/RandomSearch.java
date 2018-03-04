@@ -38,7 +38,6 @@ public class RandomSearch {
     }
 
 
-
     public int getPopulationSize() {
         return populationSize;
     }

@@ -38,13 +38,13 @@ public class Main {
         RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, randomSearchLogger);
         randomSearch.run();
 
-        CsvLogger geneticLogger = new CsvLogger("genetic"+problemSize+".csv");
+        CsvLogger geneticLogger = new CsvLogger("genetic" + problemSize + ".csv");
         Genetic genetic = Genetic.builder()
-                .selection(new Tournament(5))
-                .crossover(new Crossover(40))
-                .mutation(new Mutation(10))
-                .iterationsQuantity(100)
-                .populationSize(100)
+                .selection(new Tournament(500))
+                .crossover(new Crossover(50))
+                .mutation(new Mutation(25))
+                .iterationsQuantity(200)
+                .populationSize(1000)
                 .problemSize(problemSize)
                 .evaluator(evaluator)
                 .logger(geneticLogger)

@@ -1,6 +1,8 @@
 package domain;
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @EqualsAndHashCode(of = {"locations", "factories"})
 @ToString

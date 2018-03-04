@@ -1,5 +1,7 @@
 package utils;
 
+import algorithm.genetic.Genetic;
+import algorithm.genetic.Tournament;
 import algorithm.randomSearch.RandomSearch;
 import au.com.bytecode.opencsv.CSVWriter;
 import domain.Population;
@@ -29,6 +31,33 @@ public class CsvLogger {
                 String.valueOf(randomSearch.getPopulationSize()),
                 String.valueOf(randomSearch.getIterationsQuantity()),
                 String.valueOf(randomSearch.getProblemSize())
+        });
+
+        writer.writeNext(new String[]{
+                "populationNumber",
+                "strong",
+                "avg",
+                "weak"
+        });
+    }
+
+    public void printAlgorithmInfo(Genetic genetic) {
+        writer.writeNext(new String[]{
+                "populationSize",
+                "iterationsQuantity",
+                "problemSize",
+                "tournamentSize",
+                "crossoverProbability",
+                "mutationProbability"
+        });
+
+        writer.writeNext(new String[]{
+                String.valueOf(genetic.getPopulationSize()),
+                String.valueOf(genetic.getIterationsQuantity()),
+                String.valueOf(genetic.getProblemSize()),
+                (genetic.getSelection() instanceof Tournament) ? String.valueOf(((Tournament) genetic.getSelection()).getTournamentSize()) : "",
+                String.valueOf(genetic.getCrossover().getProbability()),
+                String.valueOf(genetic.getMutation().getProbability())
         });
 
         writer.writeNext(new String[]{
