@@ -15,7 +15,7 @@ public class ArrayUtils {
         }
     }
 
-    private static void swap(int[] a, int i, int change) {
+    public static void swap(int[] a, int i, int change) {
         int helper = a[i];
         a[i] = a[change];
         a[change] = helper;

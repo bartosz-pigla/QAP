@@ -11,7 +11,7 @@ public class Crossover {
     @Getter
     int probability;
 
-    public Solution doCrossover(Solution first, Solution second) {
+    public void doCrossover(Solution first, Solution second) {
         swapLocations(first,second);
     }
 

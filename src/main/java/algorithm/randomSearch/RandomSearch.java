@@ -25,12 +25,12 @@ public class RandomSearch {
         logger.printAlgorithmInfo(this);
 
         Population population = new Population(randomSolutions(problemSize, populationSize), evaluator);
-        population.searchForStrongAvgWeak();
+        population.calculateCostsAndSearchForStrongAvgWeak();
         logger.printStrongAvgWeak(1, population);
 
         for (int i = 1; i < iterationsQuantity; i++) {
             randomSolutions(population.getSolutions());
-            population.searchForStrongAvgWeak();
+            population.calculateCostsAndSearchForStrongAvgWeak();
             logger.printStrongAvgWeak(i + 1, population);
         }
 

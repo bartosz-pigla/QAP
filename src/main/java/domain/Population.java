@@ -3,6 +3,8 @@ package domain;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.function.Function;
+
 public class Population {
     @Getter
     @Setter
@@ -34,7 +36,7 @@ public class Population {
         this.evaluator = evaluator;
     }
 
-    public void searchForStrongAvgWeak() {
+    public void calculateCostsAndSearchForStrongAvgWeak() {
         strongCost = Integer.MAX_VALUE;
         weakCost = Integer.MIN_VALUE;
         avgCost = 0;
@@ -45,6 +47,7 @@ public class Population {
         for (int i = 0; i < solutions.length; i++) {
             current = solutions[i];
             currentCost = evaluator.getCost(current);
+            current.setCost(currentCost);
             avgCost += currentCost;
             if (currentCost < strongCost) {
                 strongCost = currentCost;
@@ -58,4 +61,30 @@ public class Population {
 
         avgCost = avgCost / solutions.length;
     }
+
+    public void searchForStrongAvgWeak() {
+        strongCost = Integer.MAX_VALUE;
+        weakCost = Integer.MIN_VALUE;
+        avgCost = 0;
+
+        Solution current = null;
+        int currentCost;
+
+        for (int i = 0; i < solutions.length; i++) {
+            current = solutions[i];
+            currentCost = current.getCost();
+            avgCost += currentCost;
+            if (currentCost < strongCost) {
+                strongCost = currentCost;
+                strong = current;
+            }
+            if (currentCost > weakCost) {
+                weakCost = currentCost;
+                weak = current;
+            }
+        }
+
+        avgCost = avgCost / solutions.length;
+    }
+
 }

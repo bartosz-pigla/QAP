@@ -7,6 +7,10 @@ import java.util.concurrent.ThreadLocalRandom;
 public class RandomUtils {
     private static final ThreadLocalRandom random = ThreadLocalRandom.current();
 
+    public static int randomNumber(int min, int max) {
+        return random.nextInt(0, max);
+    }
+
     public static boolean isSelected(int probability) {
         return random.nextInt(0, 100) < probability;
     }
