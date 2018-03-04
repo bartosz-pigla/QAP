@@ -1,3 +1,7 @@
+import algorithm.genetic.Crossover;
+import algorithm.genetic.Genetic;
+import algorithm.genetic.Mutation;
+import algorithm.genetic.Tournament;
 import algorithm.greedy.Greedy;
 import algorithm.randomSearch.RandomSearch;
 import domain.Evaluator;
@@ -30,8 +34,22 @@ public class Main {
 //        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getLocations()));
 //        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getFactories()));
 
-        CsvLogger logger = new CsvLogger("randomSearch" + problemSize + ".csv");
-        RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, logger);
+        CsvLogger randomSearchLogger = new CsvLogger("randomSearch" + problemSize + ".csv");
+        RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, randomSearchLogger);
         randomSearch.run();
+
+        CsvLogger geneticLogger = new CsvLogger("genetic"+problemSize+".csv");
+        Genetic genetic = Genetic.builder()
+                .selection(new Tournament(5))
+                .crossover(new Crossover(40))
+                .mutation(new Mutation(10))
+                .iterationsQuantity(100)
+                .populationSize(100)
+                .problemSize(problemSize)
+                .evaluator(evaluator)
+                .logger(geneticLogger)
+                .build();
+
+        genetic.run();
     }
 }

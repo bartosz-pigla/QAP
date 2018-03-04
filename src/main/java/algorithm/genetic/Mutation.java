@@ -1,17 +1,13 @@
 package algorithm.genetic;
 
 import domain.Solution;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
 import lombok.Value;
 
 import static utils.ArrayUtils.swap;
 import static utils.RandomUtils.randomNumber;
 
 @Value
-@AllArgsConstructor
 public class Mutation {
-    @Getter
     int probability;
 
     public void doMutation(Solution solution) {

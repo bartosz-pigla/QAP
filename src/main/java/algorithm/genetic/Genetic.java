@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import domain.Evaluator;
 import domain.Population;
 import domain.Solution;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
 import utils.CsvLogger;
@@ -15,7 +14,6 @@ import static utils.RandomUtils.*;
 
 @Builder
 @Value
-@AllArgsConstructor
 public class Genetic {
     int problemSize;
 
