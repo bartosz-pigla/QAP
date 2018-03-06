@@ -40,14 +40,16 @@ public class Genetic {
             newPopulation = generateNewPopulation(oldPopulation);
             newPopulation.searchForStrongAvgWeak();
             logger.printStrongAvgWeak(i, newPopulation);
+            oldPopulation = newPopulation;
         }
         logger.finish();
     }
 
     private Population generateNewPopulation(Population oldPopulation) {
         Population newPopulation = new Population(new Solution[oldPopulation.getSolutions().length], evaluator);
+        newPopulation.getSolutions()[0] = Solution.copyOf(oldPopulation.getStrong());
         Solution current = null;
-        for (int i = 0; i < populationSize; i++) {
+        for (int i = 1; i < populationSize; i++) {
             current = selection.select(oldPopulation);
             newPopulation.getSolutions()[i] = current;
 

@@ -40,11 +40,11 @@ public class Main {
 
         CsvLogger geneticLogger = new CsvLogger("genetic" + problemSize + ".csv");
         Genetic genetic = Genetic.builder()
-                .selection(new Tournament(500))
-                .crossover(new Crossover(50))
-                .mutation(new Mutation(25))
+                .selection(new Tournament(20))
+                .crossover(new Crossover(20))
+                .mutation(new Mutation(10))
                 .iterationsQuantity(200)
-                .populationSize(1000)
+                .populationSize(100)
                 .problemSize(problemSize)
                 .evaluator(evaluator)
                 .logger(geneticLogger)

@@ -19,7 +19,7 @@ public class Tournament implements Selection {
         for (int i = 0; i < tournamentSize; i++) {
             currentIdx = randomNumber(0, population.getSolutions().length - 1);
             currentSolution = population.getSolutions()[currentIdx];
-            if (currentSolution.getCost() < winnerCost) {
+            if (!currentSolution.equals(population.getStrong()) && currentSolution.getCost() < winnerCost) {
                 winnerCost = currentSolution.getCost();
                 winner = currentSolution;
             }

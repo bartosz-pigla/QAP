@@ -71,9 +71,9 @@ public class CsvLogger {
     public void printStrongAvgWeak(int populationNumber, Population population) {
         String[] row = new String[]{
                 String.valueOf(populationNumber),
-                String.valueOf(population.getStrongCost()),
+                String.valueOf(population.getStrong().getCost()),
                 String.valueOf(population.getAvgCost()),
-                String.valueOf(population.getWeakCost()),
+                String.valueOf(population.getWeak().getCost()),
         };
         writer.writeNext(row);
     }

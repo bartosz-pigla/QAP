@@ -17,12 +17,6 @@ public class Population {
     @Getter
     private Solution weak;
 
-    @Getter
-    private int strongCost;
-
-    @Getter
-    private int weakCost;
-
     private Evaluator evaluator;
 
     public Population(Evaluator evaluator) {
@@ -35,8 +29,8 @@ public class Population {
     }
 
     public void calculateCostsAndSearchForStrongAvgWeak() {
-        strongCost = Integer.MAX_VALUE;
-        weakCost = Integer.MIN_VALUE;
+        int strongCost = Integer.MAX_VALUE;
+        int weakCost = Integer.MIN_VALUE;
         avgCost = 0;
 
         Solution current = null;
@@ -50,10 +44,12 @@ public class Population {
             if (currentCost < strongCost) {
                 strongCost = currentCost;
                 strong = current;
+                strong.setCost(currentCost);
             }
             if (currentCost > weakCost) {
                 weakCost = currentCost;
                 weak = current;
+                weak.setCost(currentCost);
             }
         }
 
@@ -61,8 +57,8 @@ public class Population {
     }
 
     public void searchForStrongAvgWeak() {
-        strongCost = Integer.MAX_VALUE;
-        weakCost = Integer.MIN_VALUE;
+        int strongCost = Integer.MAX_VALUE;
+        int weakCost = Integer.MIN_VALUE;
         avgCost = 0;
 
         Solution current = null;
