@@ -1,7 +1,4 @@
-import algorithm.genetic.Crossover;
-import algorithm.genetic.Genetic;
-import algorithm.genetic.Mutation;
-import algorithm.genetic.Tournament;
+import algorithm.genetic.*;
 import algorithm.greedy.Greedy;
 import algorithm.randomSearch.RandomSearch;
 import domain.Evaluator;
@@ -40,8 +37,9 @@ public class Main {
 
         CsvLogger geneticLogger = new CsvLogger("genetic" + problemSize + ".csv");
         Genetic genetic = Genetic.builder()
-                .selection(new Tournament(20))
+                .selection(new Roulette(100))
                 .crossover(new Crossover(20))
+                .stopCondition(new StopAfterIterationsFinishedCondition())
                 .mutation(new Mutation(10))
                 .iterationsQuantity(200)
                 .populationSize(100)

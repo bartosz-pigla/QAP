@@ -11,6 +11,8 @@ public class RandomUtils {
         return random.nextInt(0, max);
     }
 
+    public static double randomNumber(double min, double max) {return random.nextDouble(0,max);}
+
     public static boolean isSelected(int probability) {
         return random.nextInt(0, 100) < probability;
     }

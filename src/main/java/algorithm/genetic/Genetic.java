@@ -20,6 +20,8 @@ public class Genetic {
     int populationSize;
     int iterationsQuantity;
 
+    StopCondition stopCondition;
+
     Mutation mutation;
     Crossover crossover;
 
@@ -36,7 +38,7 @@ public class Genetic {
         logger.printStrongAvgWeak(0, oldPopulation);
 
         Population newPopulation = null;
-        for (int i = 1; i < iterationsQuantity; i++) {
+        for (int i = 1; stopCondition.isNotFinished(this, oldPopulation, i); i++) {
             newPopulation = generateNewPopulation(oldPopulation);
             newPopulation.searchForStrongAvgWeak();
             logger.printStrongAvgWeak(i, newPopulation);
