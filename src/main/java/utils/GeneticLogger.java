@@ -29,6 +29,12 @@ public class GeneticLogger implements Logger<Genetic> {
     }
 
     public void printAlgorithmInfo(Genetic genetic) {
+        if(currentRun==0){
+            printAlgorithmInfoHelper(genetic);
+        }
+    }
+
+    private void printAlgorithmInfoHelper(Genetic genetic){
         writer.writeNext(new String[]{
                 "populationSize",
                 "iterationsQuantity",

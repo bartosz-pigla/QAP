@@ -14,7 +14,8 @@ import java.net.URL;
 public class Main {
 
     public static void main(String[] args) {
-        run(20);
+        //runGeneticAlgorithm(20);
+        runGeneticAlgorithm(20,10);
     }
 
     public static void run(int problemSize) {
@@ -30,17 +31,20 @@ public class Main {
         Solution solution = greedy.findSolution();
         System.out.println(solution);
 
-//        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getLocations()));
-//        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getFactories()));
-
         Logger randomSearchLogger = new RandomSearchLogger("randomSearch" + problemSize + ".csv");
         RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, randomSearchLogger);
         randomSearch.run();
+    }
 
+    public static void runGeneticAlgorithm(int problemSize, int runQuantity){
+        URL url = Main.class.getResource("had" + problemSize + ".dat.txt");
 
+        MatrixReader matrixReader = new MatrixReader(url);
+        matrixReader.read();
+        Evaluator evaluator = new Evaluator(matrixReader.getDistanceMatrix(), matrixReader.getFlowMatrix());
         int iterationsQuantity = 200;
         int populationSize = 100;
-        Logger geneticLogger = new GeneticLogger("genetic" + problemSize + ".csv", iterationsQuantity);
+        GeneticLogger geneticLogger = new GeneticLogger("genetic" + problemSize + ".csv", iterationsQuantity);
         Genetic genetic = Genetic.builder()
                 .selection(new Roulette(populationSize))
                 .crossover(new Crossover(20))
@@ -53,6 +57,11 @@ public class Main {
                 .logger(geneticLogger)
                 .build();
 
-        genetic.run();
+        for(int i=0; i<runQuantity;i++){
+            genetic.run();
+        }
+
+        geneticLogger.finish();
+
     }
 }
