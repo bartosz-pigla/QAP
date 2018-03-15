@@ -4,8 +4,10 @@ import algorithm.randomSearch.RandomSearch;
 import domain.Evaluator;
 import domain.Solution;
 import domain.Validator;
-import utils.CsvLogger;
+import utils.GeneticLogger;
+import utils.Logger;
 import utils.MatrixReader;
+import utils.RandomSearchLogger;
 
 import java.net.URL;
 
@@ -31,18 +33,21 @@ public class Main {
 //        System.out.println("NUMBER OF DISTINCT VALUES: LOCATION: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getLocations()));
 //        System.out.println("NUMBER OF DISTINCT VALUES: FACTORIES: " + ArrayUtils.getDistinctValuesQuantityOfArray(solution.getFactories()));
 
-        CsvLogger randomSearchLogger = new CsvLogger("randomSearch" + problemSize + ".csv");
+        Logger randomSearchLogger = new RandomSearchLogger("randomSearch" + problemSize + ".csv");
         RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, randomSearchLogger);
         randomSearch.run();
 
-        CsvLogger geneticLogger = new CsvLogger("genetic" + problemSize + ".csv");
+
+        int iterationsQuantity = 200;
+        int populationSize = 100;
+        Logger geneticLogger = new GeneticLogger("genetic" + problemSize + ".csv", iterationsQuantity);
         Genetic genetic = Genetic.builder()
-                .selection(new Roulette(100))
+                .selection(new Roulette(populationSize))
                 .crossover(new Crossover(20))
-                .stopCondition(new StopAfterIterationsFinishedCondition())
+                .stopCondition(new IterationsFinishedCondition())
                 .mutation(new Mutation(10))
-                .iterationsQuantity(200)
-                .populationSize(100)
+                .iterationsQuantity(iterationsQuantity)
+                .populationSize(populationSize)
                 .problemSize(problemSize)
                 .evaluator(evaluator)
                 .logger(geneticLogger)

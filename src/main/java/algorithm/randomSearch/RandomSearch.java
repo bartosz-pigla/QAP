@@ -2,7 +2,7 @@ package algorithm.randomSearch;
 
 import domain.Evaluator;
 import domain.Population;
-import utils.CsvLogger;
+import utils.Logger;
 
 import static utils.RandomUtils.randomSolutions;
 
@@ -11,9 +11,9 @@ public class RandomSearch {
     private int problemSize;
     private int iterationsQuantity;
     private Evaluator evaluator;
-    private CsvLogger logger;
+    private Logger logger;
 
-    public RandomSearch(int populationSize, int problemSize, int iterationsQuantity, Evaluator evaluator, CsvLogger logger) {
+    public RandomSearch(int populationSize, int problemSize, int iterationsQuantity, Evaluator evaluator, Logger logger) {
         this.populationSize = populationSize;
         this.problemSize = problemSize;
         this.iterationsQuantity = iterationsQuantity;
@@ -34,7 +34,7 @@ public class RandomSearch {
             logger.printStrongAvgWeak(i + 1, population);
         }
 
-        logger.finish();
+        logger.finishRun();
     }
 
 

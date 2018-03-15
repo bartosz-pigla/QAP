@@ -3,14 +3,14 @@ package algorithm.genetic;
 import domain.Population;
 import domain.Solution;
 
-public class StopWhenManySolutionSimilarToStrong implements StopCondition {
+public class SimilarToStrongCondition implements StopCondition {
 
     private double similarity;
     private int similarSolutionsCount;
 
     private int costLimit;
 
-    public StopWhenManySolutionSimilarToStrong(double similarity, int similarSolutionsCount) {
+    public SimilarToStrongCondition(double similarity, int similarSolutionsCount) {
         this.similarity = similarity;
         this.similarSolutionsCount = similarSolutionsCount;
     }

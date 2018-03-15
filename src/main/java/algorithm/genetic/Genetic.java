@@ -6,7 +6,7 @@ import domain.Population;
 import domain.Solution;
 import lombok.Builder;
 import lombok.Value;
-import utils.CsvLogger;
+import utils.Logger;
 
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class Genetic {
     Selection selection;
     Evaluator evaluator;
 
-    CsvLogger logger;
+    Logger logger;
 
     public void run() {
         logger.printAlgorithmInfo(this);
@@ -44,7 +44,7 @@ public class Genetic {
             logger.printStrongAvgWeak(i, newPopulation);
             oldPopulation = newPopulation;
         }
-        logger.finish();
+        logger.finishRun();
     }
 
     private Population generateNewPopulation(Population oldPopulation) {

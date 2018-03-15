@@ -1,7 +1,5 @@
 package utils;
 
-import algorithm.genetic.Genetic;
-import algorithm.genetic.Tournament;
 import algorithm.randomSearch.RandomSearch;
 import au.com.bytecode.opencsv.CSVWriter;
 import domain.Population;
@@ -9,10 +7,11 @@ import domain.Population;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class CsvLogger {
+public class RandomSearchLogger implements Logger<RandomSearch> {
+
     private CSVWriter writer;
 
-    public CsvLogger(String filename) {
+    public RandomSearchLogger(String filename) {
         try {
             this.writer = new CSVWriter(new FileWriter(filename), '\t');
         } catch (Exception exc) {
@@ -41,36 +40,9 @@ public class CsvLogger {
         });
     }
 
-    public void printAlgorithmInfo(Genetic genetic) {
-        writer.writeNext(new String[]{
-                "populationSize",
-                "iterationsQuantity",
-                "problemSize",
-                "tournamentSize",
-                "crossoverProbability",
-                "mutationProbability"
-        });
-
-        writer.writeNext(new String[]{
-                String.valueOf(genetic.getPopulationSize()),
-                String.valueOf(genetic.getIterationsQuantity()),
-                String.valueOf(genetic.getProblemSize()),
-                (genetic.getSelection() instanceof Tournament) ? String.valueOf(((Tournament) genetic.getSelection()).getTournamentSize()) : "",
-                String.valueOf(genetic.getCrossover().getProbability()),
-                String.valueOf(genetic.getMutation().getProbability())
-        });
-
-        writer.writeNext(new String[]{
-                "populationNumber",
-                "strong",
-                "avg",
-                "weak"
-        });
-    }
-
-    public void printStrongAvgWeak(int populationNumber, Population population) {
+    public void printStrongAvgWeak(int iterationNumber, Population population) {
         String[] row = new String[]{
-                String.valueOf(populationNumber),
+                String.valueOf(iterationNumber),
                 String.valueOf(population.getStrong().getCost()),
                 String.valueOf(population.getAvgCost()),
                 String.valueOf(population.getWeak().getCost()),
@@ -78,11 +50,12 @@ public class CsvLogger {
         writer.writeNext(row);
     }
 
-    public void finish() {
+    public void finishRun() {
         try {
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
