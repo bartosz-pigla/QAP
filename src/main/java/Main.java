@@ -1,21 +1,24 @@
-import algorithm.genetic.*;
+import java.net.URL;
+
+import algorithm.genetic.Crossover;
+import algorithm.genetic.Genetic;
+import algorithm.genetic.Mutation;
+import algorithm.genetic.Roulette;
+import algorithm.genetic.SimilarToStrongCondition;
 import algorithm.greedy.Greedy;
 import algorithm.randomSearch.RandomSearch;
 import domain.Evaluator;
 import domain.Solution;
 import domain.Validator;
 import utils.GeneticLogger;
-import utils.Logger;
 import utils.MatrixReader;
 import utils.RandomSearchLogger;
-
-import java.net.URL;
 
 public class Main {
 
     public static void main(String[] args) {
-        //runGeneticAlgorithm(20);
-        runGeneticAlgorithm(20,10);
+        //run(16);
+        runGeneticAlgorithm(16,10);
     }
 
     public static void run(int problemSize) {
@@ -29,11 +32,18 @@ public class Main {
 
         Greedy greedy = new Greedy(problemSize, evaluator, validator);
         Solution solution = greedy.findSolution();
+        solution.setCost(evaluator.getCost(solution));
         System.out.println(solution);
 
-        Logger randomSearchLogger = new RandomSearchLogger("randomSearch" + problemSize + ".csv");
-        RandomSearch randomSearch = new RandomSearch(1000, 12, 10, evaluator, randomSearchLogger);
-        randomSearch.run();
+        int runQuantity = 10;
+        RandomSearchLogger randomSearchLogger = new RandomSearchLogger("randomSearch" + problemSize + ".csv", 100);
+        RandomSearch randomSearch = new RandomSearch(100, problemSize, 100, evaluator, randomSearchLogger);
+
+        for(int i=0; i<runQuantity;i++){
+            randomSearch.run();
+        }
+
+        randomSearchLogger.finish();
     }
 
     public static void runGeneticAlgorithm(int problemSize, int runQuantity){
@@ -42,13 +52,13 @@ public class Main {
         MatrixReader matrixReader = new MatrixReader(url);
         matrixReader.read();
         Evaluator evaluator = new Evaluator(matrixReader.getDistanceMatrix(), matrixReader.getFlowMatrix());
-        int iterationsQuantity = 200;
+        int iterationsQuantity = 100;
         int populationSize = 100;
-        GeneticLogger geneticLogger = new GeneticLogger("genetic" + problemSize + ".csv", iterationsQuantity);
+        GeneticLogger geneticLogger = new GeneticLogger("genetic" + problemSize + ".csv", 10000);
         Genetic genetic = Genetic.builder()
                 .selection(new Roulette(populationSize))
                 .crossover(new Crossover(20))
-                .stopCondition(new IterationsFinishedCondition())
+                .stopCondition(new SimilarToStrongCondition(0.1, 50))
                 .mutation(new Mutation(10))
                 .iterationsQuantity(iterationsQuantity)
                 .populationSize(populationSize)
@@ -56,10 +66,7 @@ public class Main {
                 .evaluator(evaluator)
                 .logger(geneticLogger)
                 .build();
-
-        for(int i=0; i<runQuantity;i++){
-            genetic.run();
-        }
+        genetic.run();
 
         geneticLogger.finish();
 

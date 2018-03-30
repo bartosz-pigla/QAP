@@ -1,5 +1,11 @@
 package algorithm.genetic;
 
+import static utils.RandomUtils.isSelected;
+import static utils.RandomUtils.randomSolutions;
+import static utils.RandomUtils.selectSolutionOtherThan;
+
+import java.util.List;
+
 import com.google.common.collect.ImmutableList;
 import domain.Evaluator;
 import domain.Population;
@@ -8,13 +14,10 @@ import lombok.Builder;
 import lombok.Value;
 import utils.Logger;
 
-import java.util.List;
-
-import static utils.RandomUtils.*;
-
 @Builder
 @Value
 public class Genetic {
+
     int problemSize;
 
     int populationSize;
@@ -94,6 +97,19 @@ public class Genetic {
         } else {
             return null;
         }
+    }
+
+    private Solution mutateAndCrossoverTheBest(Solution solution, Population oldPopulation) {
+        List<Solution> crossedSolutions = getCrossedSolutions(solution, oldPopulation);
+        if (!crossedSolutions.isEmpty()) {
+            solution = crossedSolutions.get(0);
+        }
+
+        Solution mutatedSolution = getMutatedSolution(solution);
+        if (mutatedSolution != null) {
+            solution = mutatedSolution;
+        }
+        return solution;
     }
 
 }
